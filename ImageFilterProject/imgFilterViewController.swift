@@ -20,8 +20,8 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBOutlet weak var progressLabel: UILabel!
    
-   var inputRadius=150.00
-   var inputAngle=0.00
+   var inputRadius=2.50
+   var inputIntensity=0.50
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +58,7 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBAction func blackAndWhite(_ sender: Any) {
         //originalImage=imgPlaceHolder.image!
+        
         let inputImage1=originalImage
        // originalImage=inputImage1
         let rawImage=CIImage(image:inputImage1)!
@@ -119,9 +120,9 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func sliderInputAngle(_ sender: UISlider) {
-        inputAngle=Double(sender.value)
+        inputIntensity=Double(sender.value)
     }
-    
+    /*
     @IBAction func circularWrap(_ sender: Any) {
         let inputImage1=originalImage
          let rawImage=CIImage(image:inputImage1)!
@@ -139,7 +140,7 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
         
     }
     
-    
+    */
     
     @IBAction func photoEffectsProcess(_ sender: Any) {
         let inputImage1=originalImage
@@ -155,4 +156,21 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
        
     }
 }
+    
+    @IBAction func unSharpMask(_ sender: Any) {
+        
+        let inputImage1=originalImage
+        let rawImage=CIImage(image:inputImage1)!
+        let circularWrapParams: [String:Any]=[kCIInputImageKey:rawImage, kCIInputRadiusKey:inputRadius,kCIInputIntensityKey:inputIntensity]
+        let circularWrapFilter=CIFilter(name: "CIUnsharpMask", parameters: circularWrapParams)
+        let context=CIContext(options: nil)
+        if let  output=circularWrapFilter?.outputImage{
+            if let ciImg=context.createCGImage(output, from: output.extent){
+                let finalImage=UIImage(cgImage: ciImg)
+                imgPlaceHolder.image=finalImage
+                
+            }
+            
+        }
+    }
 }
