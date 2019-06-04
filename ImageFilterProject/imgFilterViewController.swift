@@ -20,7 +20,9 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBOutlet weak var progressLabel: UILabel!
    
-   var inputRadius=2.50
+    @IBOutlet weak var errorMsg: UILabel!
+    
+    var inputRadius=2.50
    var inputIntensity=0.50
    
     override func viewDidLoad() {
@@ -58,7 +60,7 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBAction func blackAndWhite(_ sender: Any) {
         //originalImage=imgPlaceHolder.image!
-        
+        if(originalImage != nil){
         let inputImage1=originalImage
        // originalImage=inputImage1
         let rawImage=CIImage(image:inputImage1)!
@@ -71,6 +73,9 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
                imgPlaceHolder.image=finalImage
             }
             
+        }
+        }else{
+            errorMsg.text="Please upload Image"
         }
         
         
