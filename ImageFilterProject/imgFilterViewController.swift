@@ -40,11 +40,13 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
     }
     */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-      imgPlaceHolder.image=info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        if(info[UIImagePickerController.InfoKey.originalImage] as? UIImage != nil){
+      let userSelection=info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        imgPlaceHolder.image=userSelection
         imgPlaceHolder.backgroundColor = UIColor.clear
         self.dismiss(animated:true,completion: nil)
         originalImage=imgPlaceHolder.image!
-        
+        }
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         
@@ -54,6 +56,7 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
         var myPickerController=UIImagePickerController()
         myPickerController.delegate=self
        myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
+myPickerController.allowsEditing=true
         self.present(myPickerController,animated:true,completion: nil)
         
     }
