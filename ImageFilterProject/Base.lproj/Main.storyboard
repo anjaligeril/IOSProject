@@ -126,13 +126,6 @@
                                     <action selector="unSharpMask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AF6-Ef-hBV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aed-6n-Lrc">
-                                <rect key="frame" x="174" y="460" width="220" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKi-Xy-PnV">
                                 <rect key="frame" x="20" y="451" width="110" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -150,7 +143,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="bJw-sq-k05"/>
                     <connections>
-                        <outlet property="errorMsg" destination="Aed-6n-Lrc" id="0dz-zR-QPs"/>
                         <outlet property="imageUploadProgress" destination="8bC-Xf-vdC" id="2rc-qa-C7I"/>
                         <outlet property="imgPlaceHolder" destination="7di-vq-hop" id="Qh9-sK-utM"/>
                         <outlet property="progressLabel" destination="ri3-7E-UhP" id="2xg-yB-a2V"/>

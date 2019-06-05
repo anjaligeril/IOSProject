@@ -20,7 +20,7 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBOutlet weak var progressLabel: UILabel!
    
-    @IBOutlet weak var errorMsg: UILabel!
+    
     
     var inputRadius=2.50
    var inputIntensity=0.50
@@ -60,7 +60,7 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBAction func blackAndWhite(_ sender: Any) {
         //originalImage=imgPlaceHolder.image!
-        if(originalImage != nil){
+       
         let inputImage1=originalImage
        // originalImage=inputImage1
         let rawImage=CIImage(image:inputImage1)!
@@ -74,9 +74,7 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
             }
             
         }
-        }else{
-            errorMsg.text="Please upload Image"
-        }
+        
         
         
     }
@@ -85,7 +83,7 @@ class imgFilterViewController: UIViewController, UIImagePickerControllerDelegate
  let inputImage1=originalImage
        // originalImage=inputImage1
         let rawImage=CIImage(image:inputImage1)!
-        let boxBlurParams: [String:Any]=[kCIInputImageKey:rawImage,kCIInputRadiusKey:3]
+        let boxBlurParams: [String:Any]=[kCIInputImageKey:rawImage,kCIInputRadiusKey:50]
         let boxBlurFilter=CIFilter(name: "CIBoxBlur", parameters: boxBlurParams)
         let context=CIContext(options: nil)
         if let  output=boxBlurFilter?.outputImage{
